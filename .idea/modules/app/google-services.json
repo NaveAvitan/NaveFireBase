@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "228304398408",
+    "firebase_url": "https://navesql1.firebaseio.com",
+    "project_id": "navesql1",
+    "storage_bucket": "navesql1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228304398408:android:3bc2c9c261daca8c5c107d",
+        "android_client_info": {
+          "package_name": "com.example.navefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228304398408-vvrjc2kugjojs3g5tu9ip6p1fq2pn2po.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.navefirebase",
+            "certificate_hash": "a002447255d25db2e702ce7f422987d756d28cd5"
+          }
+        },
+        {
+          "client_id": "228304398408-f0079jtsk9shgc80f3fjq3ob1g2v2nbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzqQ7-iPQhMuJmGcdKtTkdoT2TFSSXjec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228304398408-f0079jtsk9shgc80f3fjq3ob1g2v2nbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
