@@ -22,17 +22,22 @@ public class Credits extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * switch activity
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case (R.id.menuDelete): {
-                Intent s = new Intent(this, menuDelete.class);
+                Intent s = new Intent(this, Delete.class);
                 startActivity(s);
                 break;
             }
             case (R.id.menuSort): {
-                Intent s = new Intent(this, menuSort.class);
+                Intent s = new Intent(this, Sort.class);
                 startActivity(s);
                 break;
             }

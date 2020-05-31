@@ -4,7 +4,7 @@ package com.example.navefirebase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class FBref {
+public class FBREF {
     public static FirebaseDatabase FBDB = FirebaseDatabase.getInstance();
 
     public static DatabaseReference refStudents = FBDB.getReference("Student_Private_Info");

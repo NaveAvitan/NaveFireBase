@@ -1,6 +1,6 @@
 package com.example.navefirebase;
 
-public class Student_Private_Info {
+public class StudentInfo {
     private String Student_N;
     private String address;
     private long Student_P;
@@ -11,9 +11,9 @@ public class Student_Private_Info {
     private long Dad_P;
     private String stuID;
 
-    public Student_Private_Info(){ }
+    public StudentInfo(){ }
 
-    public Student_Private_Info(String Student_N, String Address, long Student_P, long home_Phone, String Mom_N , long Mom_P, String Dad_N, long Dad_P, String stuID){
+    public StudentInfo(String Student_N, String Address, long Student_P, long home_Phone, String Mom_N , long Mom_P, String Dad_N, long Dad_P, String stuID){
         this.Student_N = Student_N;
         this.address = Address;
         this.Student_P = Student_P;

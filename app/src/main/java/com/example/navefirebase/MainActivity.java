@@ -11,24 +11,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.navefirebase.FBref.refStudentGrade;
-import static com.example.navefirebase.FBref.refStudents;
+import static com.example.navefirebase.FBREF.refStudentGrade;
+import static com.example.navefirebase.FBREF.refStudents;
 
 
 
 
 public class MainActivity extends AppCompatActivity {
     EditText S_Name,Address,S_Phone,HomePhone,M_Name,M_Phone,D_Name,D_Phone,Subject,Quarter,Grade;
-    Student_Private_Info SPI;
-    StuGrades SG;
+    StudentInfo SPI;
+    Grades SG;
     String  stuID=" ";
 
-    /**
-     * @author Dvir Dadon
-     * @Version 3.6.3
-     * @since 19/4/2020
-     * @param savedInstanceState
-     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * @since 19/4/2020
+     * put on the firebase the data from the user
      * @param view
-     * The method insert the info the user entered to the firebase data
      */
 
     public void Data_In(View view) {
@@ -70,14 +64,13 @@ public class MainActivity extends AppCompatActivity {
         long D_P = Long.parseLong(Dad_Phone);
 
         stuID = Student_N.charAt(0)+"_"+Student_P.charAt(3)+Student_P.charAt(4);
-        SPI = new Student_Private_Info(Student_N,address,S_P,HP,Mom_N,M_P,Dad_N,D_P,stuID);
+        SPI = new StudentInfo(Student_N,address,S_P,HP,Mom_N,M_P,Dad_N,D_P,stuID);
         refStudents.child(stuID).setValue(SPI);
     }
 
     /**
-     * @since 19/4/2020
+     * put on the firebase the data from the user
      * @param view
-     * The method insert the info the user entered to the firebase data
      */
     public void Grades_In(View view) {
         if(stuID== " "){
@@ -91,16 +84,11 @@ public class MainActivity extends AppCompatActivity {
             long Q = Long.parseLong(quarter);
             long G = Long.parseLong(grade);
 
-            SG = new StuGrades(subject, Q, G, stuID);
+            SG = new Grades(subject, Q, G, stuID);
             refStudentGrade.child(stuID).setValue(SG);
         }
     }
 
-    /**
-     * @since 19/4/2020
-     * @param menu
-     * @return menu inflater
-     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
@@ -109,21 +97,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * @since 19/4/2020
+     * switch activity
      * @param item
-     * @return moving to the next activity as the user choice
+     * @return
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case (R.id.menuDelete): {
-                Intent s = new Intent(this, menuDelete.class);
+                Intent s = new Intent(this, Delete.class);
                 startActivity(s);
                 break;
             }
             case (R.id.menuSort): {
-                Intent s = new Intent(this, menuSort.class);
+                Intent s = new Intent(this, Sort.class);
                 startActivity(s);
                 break;
             }

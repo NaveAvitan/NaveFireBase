@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import static com.example.navefirebase.FBref.refStudentGrade;
-import static com.example.navefirebase.FBref.refStudents;
+import static com.example.navefirebase.FBREF.refStudentGrade;
+import static com.example.navefirebase.FBREF.refStudents;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -25,11 +25,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 
-public class menuDelete extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Delete extends AppCompatActivity implements AdapterView.OnItemClickListener{
     ArrayList<String> stuList = new ArrayList<String>();
-    ArrayList<Student_Private_Info> stuValues = new ArrayList<Student_Private_Info>();
+    ArrayList<StudentInfo> stuValues = new ArrayList<StudentInfo>();
     ArrayList<String> stuGradeList = new ArrayList<String>();
-    ArrayList<StuGrades> stuGradeValues = new ArrayList<StuGrades>();
+    ArrayList<Grades> stuGradeValues = new ArrayList<Grades>();
     ListView lv,lvGrades;
     String str1,str2,str3,str4;
     ArrayAdapter<String> adp;
@@ -56,13 +56,13 @@ public class menuDelete extends AppCompatActivity implements AdapterView.OnItemC
                 stuValues.clear();
                 for(DataSnapshot data : dS.getChildren()) {
                     str1 = (String)data.getKey();
-                    Student_Private_Info stuTmp = data.getValue(Student_Private_Info.class);
+                    StudentInfo stuTmp = data.getValue(StudentInfo.class);
                     stuValues.add(stuTmp);
                     str2 = stuTmp.getStudent_N()+","+stuTmp.getStudent_P()+","+stuTmp.getAddress()+","+ stuTmp.getHome_Phone()+",";
                     str2+= stuTmp.getMom_N()+","+ stuTmp.getMom_P()+ "," +stuTmp.getDad_N() + ","+ stuTmp.getDad_P();
                     stuList.add(str1+" "+str2);
                 }
-                adp = new ArrayAdapter<String>(menuDelete.this,R.layout.support_simple_spinner_dropdown_item, stuList);
+                adp = new ArrayAdapter<String>(Delete.this,R.layout.support_simple_spinner_dropdown_item, stuList);
                 lv.setAdapter(adp);
             }
 
@@ -80,12 +80,12 @@ public class menuDelete extends AppCompatActivity implements AdapterView.OnItemC
                 stuGradeValues.clear();
                 for (DataSnapshot data : dS.getChildren()){
                     str3 = (String) data.getKey();
-                    StuGrades stuGradeTmp = data.getValue(StuGrades.class);
+                    Grades stuGradeTmp = data.getValue(Grades.class);
                     stuGradeValues.add(stuGradeTmp);
                     str4 = stuGradeTmp.getSubject()+","+stuGradeTmp.getQuarter()+","+stuGradeTmp.getGrade();
                     stuGradeList.add(str3+" "+str4);
                 }
-                adp2 = new ArrayAdapter<String>(menuDelete.this,R.layout.support_simple_spinner_dropdown_item,stuGradeList);
+                adp2 = new ArrayAdapter<String>(Delete.this,R.layout.support_simple_spinner_dropdown_item,stuGradeList);
                 lvGrades.setAdapter(adp2);
             }
 
@@ -99,8 +99,7 @@ public class menuDelete extends AppCompatActivity implements AdapterView.OnItemC
     }
 
     /**
-     * @since 20/4/2020
-     * the method checking if the user want to delete information by long click
+     *  delete thee information with long click
      * @param parent
      * @param view
      * @param position
@@ -131,7 +130,7 @@ public class menuDelete extends AppCompatActivity implements AdapterView.OnItemC
                 adb.setPositiveButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(menuDelete.this, str1, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Delete.this, str1, Toast.LENGTH_SHORT).show();
                         dialog.cancel();
                     }
                 });
@@ -183,6 +182,11 @@ public class menuDelete extends AppCompatActivity implements AdapterView.OnItemC
         return true;
     }
 
+    /**
+     * switch activity
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -194,7 +198,7 @@ public class menuDelete extends AppCompatActivity implements AdapterView.OnItemC
                 break;
             }
             case (R.id.menuSort): {
-                Intent s = new Intent(this, menuSort.class);
+                Intent s = new Intent(this, Sort.class);
                 EndAct();
                 startActivity(s);
                 break;

@@ -20,12 +20,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import static com.example.navefirebase.FBref.refStudentGrade;
+import static com.example.navefirebase.FBREF.refStudentGrade;
 
-public class menuSort extends AppCompatActivity {
+public class Sort extends AppCompatActivity {
     ArrayList<String> stuGradeList = new ArrayList<String>();
-    ArrayList<StuGrades> stuGradeValues = new ArrayList<StuGrades>();
-    ArrayList<StuGrades> stuSub = new ArrayList<StuGrades>();
+    ArrayList<Grades> stuGradeValues = new ArrayList<Grades>();
+    ArrayList<Grades> stuSub = new ArrayList<Grades>();
     ArrayList<String> sorted = new ArrayList<String>();
     ListView  lvGrades,lvsorted;
     String  str3, str4;
@@ -50,12 +50,12 @@ public class menuSort extends AppCompatActivity {
                 stuGradeValues.clear();
                 for (DataSnapshot data : dS.getChildren()){
                     str3 = (String) data.getKey();
-                    StuGrades stuGradeTmp = data.getValue(StuGrades.class);
+                    Grades stuGradeTmp = data.getValue(Grades.class);
                     stuGradeValues.add(stuGradeTmp);
                     str4 = stuGradeTmp.getSubject()+","+stuGradeTmp.getQuarter()+","+stuGradeTmp.getGrade();
                     stuGradeList.add(str3+" "+str4);
                 }
-                adp2 = new ArrayAdapter<String>(menuSort.this,R.layout.support_simple_spinner_dropdown_item,stuGradeList);
+                adp2 = new ArrayAdapter<String>(Sort.this,R.layout.support_simple_spinner_dropdown_item,stuGradeList);
                 lvGrades.setAdapter(adp2);
             }
 
@@ -68,8 +68,7 @@ public class menuSort extends AppCompatActivity {
     }
 
     /**
-     * @since 26/4/2020
-     * The method filtering the subject by user input
+     *  do a filtering to the subject by user input
      * @param view
      */
     public void Filter_Subject(View view) {
@@ -83,13 +82,13 @@ public class menuSort extends AppCompatActivity {
                 stuSub.clear();
                 for (DataSnapshot data : dS.getChildren()){
                     str3 = (String) data.getKey();
-                    StuGrades stuGradeTmp = data.getValue(StuGrades.class);
+                    Grades stuGradeTmp = data.getValue(Grades.class);
                     stuSub.add(stuGradeTmp);
                     assert stuGradeTmp != null;
                     str4 = stuGradeTmp.getSubject()+","+stuGradeTmp.getQuarter()+","+stuGradeTmp.getGrade();
                     sorted.add(str3+" "+str4);
                 }
-                adp3 = new ArrayAdapter<String>(menuSort.this,R.layout.support_simple_spinner_dropdown_item, sorted);
+                adp3 = new ArrayAdapter<String>(Sort.this,R.layout.support_simple_spinner_dropdown_item, sorted);
                 lvsorted.setAdapter(adp3);
             }
 
@@ -101,8 +100,7 @@ public class menuSort extends AppCompatActivity {
         query.addListenerForSingleValueEvent(stuGradeListener); }
 
     /**
-     * @since 26/4/2020
-     * The method filtering grade upward from the input that entered.
+     * The do filtering  to the grade upward from the input that entered.
      * @param view
      */
     public void Filter_Grade(View view) {
@@ -117,13 +115,13 @@ public class menuSort extends AppCompatActivity {
                 stuSub.clear();
                 for (DataSnapshot data : dS.getChildren()){
                     str3 = (String) data.getKey();
-                    StuGrades stuGradeTmp = data.getValue(StuGrades.class);
+                    Grades stuGradeTmp = data.getValue(Grades.class);
                     stuSub.add(stuGradeTmp);
                     assert stuGradeTmp != null;
                     str4 = stuGradeTmp.getSubject()+","+stuGradeTmp.getQuarter()+","+stuGradeTmp.getGrade();
                     sorted.add(str3+" "+str4);
                 }
-                adp3 = new ArrayAdapter<String>(menuSort.this,R.layout.support_simple_spinner_dropdown_item, sorted);
+                adp3 = new ArrayAdapter<String>(Sort.this,R.layout.support_simple_spinner_dropdown_item, sorted);
                 lvsorted.setAdapter(adp3);
             }
 
@@ -146,6 +144,11 @@ public class menuSort extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * switch activity
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -158,7 +161,7 @@ public class menuSort extends AppCompatActivity {
                 break;
             }
             case (R.id.menuDelete): {
-                Intent s = new Intent(this, menuDelete.class);
+                Intent s = new Intent(this, Delete.class);
                 EndAct();
                 startActivity(s);
                 break;

@@ -1,15 +1,15 @@
 package com.example.navefirebase;
 
-public class StuGrades {
+public class Grades {
     private String subject;
     private long quarter;
     private long grade;
     private String StuID;
 
 
-    public StuGrades(){}
+    public Grades(){}
 
-    public StuGrades(String subject , long quarter , long grade, String StuID){
+    public Grades(String subject , long quarter , long grade, String StuID){
         this.subject = subject;
         this.quarter = quarter;
         this.grade = grade;

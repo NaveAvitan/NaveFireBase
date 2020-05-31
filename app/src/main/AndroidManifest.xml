@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Credits"/>
-        <activity android:name=".menuDelete"/>
-        <activity android:name=".menuSort"/>
+        <activity android:name=".Delete"/>
+        <activity android:name=".Sort"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
